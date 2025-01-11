@@ -526,9 +526,13 @@ int main(int argc, char * argv[])
    // mode pixel hs d'entrainement
    training_mode = 1;
    
-   if (nb_pixel_hs < 2 || nb_pixel_hs > MAX_DEAD_PIXEL)
+   if (nb_pixel_hs == 0)
    {
-    nb_pixel_hs = 2;
+    nb_pixel_hs = 1;
+   } 
+   else if (nb_pixel_hs > MAX_DEAD_PIXEL)
+   {
+    nb_pixel_hs = MAX_DEAD_PIXEL;
    }    
 
    fprintf(stdout, "There are %d fake dead pixels, try to find them by changing color...\n", nb_pixel_hs);
